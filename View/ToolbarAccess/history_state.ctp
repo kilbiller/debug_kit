@@ -1,4 +1,11 @@
 <?php
+
+use Cake\Utility\Inflector;
+use Cake\Core\Configure;
+
+?>
+
+<?php
 /**
  * Toolbar history state view.
  *

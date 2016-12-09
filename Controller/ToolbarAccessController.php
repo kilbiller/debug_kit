@@ -12,8 +12,10 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Security', 'Utility');
-App::uses('DebugKitAppController', 'DebugKit.Controller');
+namespace DebugKit\Controller;
+
+use Cake\Utility\Security;
+use Cake\Core\Configure;
 
 /**
  * DebugKit ToolbarAccess Controller
@@ -108,11 +110,11 @@ class ToolbarAccessController extends DebugKitAppController {
 			empty($this->request->data['log']['hash']) ||
 			Configure::read('debug') == 0
 		) {
-			throw new BadRequestException('Invalid parameters');
+			throw new \BadRequestException('Invalid parameters');
 		}
 		$hash = Security::hash($this->request->data['log']['sql'] . $this->request->data['log']['ds'], 'sha1', true);
 		if ($hash !== $this->request->data['log']['hash']) {
-			throw new BadRequestException('Invalid parameters');
+			throw new \BadRequestException('Invalid parameters');
 		}
 		$result = $this->ToolbarAccess->explainQuery($this->request->data['log']['ds'], $this->request->data['log']['sql']);
 		$this->set(compact('result'));

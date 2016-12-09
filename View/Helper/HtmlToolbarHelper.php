@@ -12,8 +12,14 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('ToolbarHelper', 'DebugKit.View/Helper');
-App::uses('Security', 'Utility');
+
+namespace DebugKit\View\Helper;
+
+use DebugKit\View\Helper\ToolbarHelper;
+use Cake\Utility\Security;
+use Cake\Core\Configure;
+use Cake\Utility\Hash;
+use Cake\Routing\Router;
 
 /**
  * Html Toolbar Helper
@@ -51,7 +57,7 @@ class HtmlToolbarHelper extends ToolbarHelper {
 	public function makeNeatArray($values, $openDepth = 0, $currentDepth = 0, $doubleEncode = false) {
 		static $printedObjects = null;
 		if ($currentDepth === 0) {
-			$printedObjects = new SplObjectStorage();
+			$printedObjects = new \SplObjectStorage();
 		}
 		$className = "neat-array depth-$currentDepth";
 		if ($openDepth > $currentDepth) {
@@ -105,8 +111,8 @@ class HtmlToolbarHelper extends ToolbarHelper {
 
 			if (
 				(
-				$value instanceof ArrayAccess ||
-				$value instanceof Iterator ||
+				$value instanceof \ArrayAccess ||
+				$value instanceof \Iterator ||
 				is_array($value) ||
 				$isObject
 				) && !empty($value)

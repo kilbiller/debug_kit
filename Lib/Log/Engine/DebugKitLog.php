@@ -11,6 +11,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+namespace DebugKit\Lib\Log\Engine;
+
+use Cake\Log\CakeLogInterface;
+
+
 /**
  * A CakeLog listener which saves having to munge files or other configured loggers.
  *

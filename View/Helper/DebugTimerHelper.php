@@ -12,9 +12,13 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('DebugTimer', 'DebugKit.Lib');
-App::uses('DebugMemory', 'DebugKit.Lib');
-App::uses('Helper', 'View');
+namespace DebugKit\View\Helper;
+
+use DebugKit\Lib\DebugTimer;
+use DebugKit\Lib\DebugMemory;
+use Cake\View\Helper;
+use Cake\View\View;
+use Cake\Utility\Debugger;
 
 /**
  * Class DebugTimerHelper

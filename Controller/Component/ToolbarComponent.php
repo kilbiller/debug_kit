@@ -13,13 +13,22 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('CakeLog', 'Log');
-App::uses('CakeLogInterface', 'Log');
-App::uses('DebugTimer', 'DebugKit.Lib');
-App::uses('DebugMemory', 'DebugKit.Lib');
-App::uses('HelperCollection', 'View');
-App::uses('CakeEventManager', 'Event');
-App::uses('CakeEventListener', 'Event');
+namespace DebugKit\Controller\Component;
+
+use Cake\Log\CakeLog;
+use Cake\Log\CakeLogInterface;
+use DebugKit\Lib\DebugTimer;
+use DebugKit\Lib\DebugMemory;
+use Cake\View\HelperCollection;
+use Cake\Event\CakeEventManager;
+use Cake\Event\CakeEventListener;
+use Cake\Controller\Component;
+use Cake\Controller\ComponentCollection;
+use Cake\Core\Configure;
+use Cake\Controller\Controller;
+use Cake\Utility\Inflector;
+use Cake\Cache\Cache;
+use DebugKit\Lib\DebugPanel;
 
 /**
  * Class ToolbarComponent
@@ -295,7 +304,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
  * @return void
  */
 	public function beforeRedirect(Controller $controller, $url, $status = null, $exit = true) {
-		if (!class_exists('DebugTimer')) {
+		if (!class_exists('\\DebugKit\\Lib\\DebugTimer')) {
 			return null;
 		}
 		DebugTimer::stop('controllerAction');
@@ -317,7 +326,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
  * @return void
  */
 	public function beforeRender(Controller $controller) {
-		if (!class_exists('DebugTimer')) {
+		if (!class_exists('\\DebugKit\\Lib\\DebugTimer')) {
 			return null;
 		}
 		DebugTimer::stop('controllerAction');
@@ -441,7 +450,9 @@ class ToolbarComponent extends Component implements CakeEventListener {
 			$className = ucfirst($panel) . 'Panel';
 			list($plugin, $className) = pluginSplit($className, true);
 
-			App::uses($className, $plugin . 'Panel');
+			$namespace = '\\' . substr($plugin, 0, -1) . '\\Lib\\Panel\\';
+			$className = $namespace . $className;
+
 			if (!class_exists($className)) {
 				trigger_error(__d('debug_kit', 'Could not load DebugToolbar panel %s', $panel), E_USER_WARNING);
 				continue;
@@ -478,12 +489,12 @@ class ToolbarComponent extends Component implements CakeEventListener {
 			// Remove unserializable native objects.
 			array_walk_recursive($vars['variables']['content'], function (&$item) {
 				if (
-					$item instanceof Closure ||
-					$item instanceof PDO ||
-					$item instanceof SimpleXmlElement
+					$item instanceof \Closure ||
+					$item instanceof \PDO ||
+					$item instanceof \SimpleXmlElement
 				) {
 					$item = 'Unserializable object - ' . get_class($item);
-				} elseif ($item instanceof Exception) {
+				} elseif ($item instanceof \Exception) {
 					$item = sprintf(
 						'Unserializable object - %s. Error: %s in %s, line %s',
 						get_class($item),

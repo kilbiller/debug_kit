@@ -31,5 +31,10 @@
             "dev-master": "2.2.x-dev"
         },
         "installer-name": "DebugKit"
+    },
+	"autoload": {
+        "psr-4": {
+            "DebugKit\\": "."
+        }
     }
 }

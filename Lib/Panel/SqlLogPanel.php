@@ -11,7 +11,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('DebugPanel', 'DebugKit.Lib');
+namespace DebugKit\Lib\Panel;
+
+use DebugKit\Lib\DebugPanel;
+use Cake\Controller\Controller;
+use Cake\Model\ConnectionManager;
+use Cake\Core\Configure;
 
 /**
  * Provides debug information on the SQL logs and provides links to an ajax explain interface.
@@ -34,7 +39,7 @@ class SqlLogPanel extends DebugPanel {
  * @return array
  */
 	public function beforeRender(Controller $controller) {
-		if (!class_exists('ConnectionManager')) {
+		if (!class_exists('\\Cake\\Model\\ConnectionManager')) {
 			return array();
 		}
 		$connections = array();

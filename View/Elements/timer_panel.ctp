@@ -1,4 +1,11 @@
 <?php
+
+use DebugKit\Lib\DebugKitDebugger;
+use DebugKit\Lib\DebugTimer;
+
+?>
+
+<?php
 /**
  * Timer Panel Element
  *

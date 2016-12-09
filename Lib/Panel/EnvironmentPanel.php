@@ -12,7 +12,11 @@
  *
  */
 
-App::uses('DebugPanel', 'DebugKit.Lib');
+namespace DebugKit\Lib\Panel;
+
+use DebugKit\Lib\DebugPanel;
+use Cake\Controller\Controller;
+use Cake\Core\Configure;
 
 /**
  * Provides information about your PHP and CakePHP environment to assist with debugging.

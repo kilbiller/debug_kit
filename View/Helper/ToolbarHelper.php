@@ -12,9 +12,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('DebugKitDebugger', 'DebugKit.Lib');
-App::uses('AppHelper', 'View/Helper');
-App::uses('ConnectionManager', 'Model');
+namespace DebugKit\View\Helper;
+
+use DebugKit\Lib\DebugKitDebugger;
+use Cake\Model\ConnectionManager;
+use Invityou\View\Helper\AppHelper;
+use Cake\Cache\Cache;
 
 /**
  * Provides Base methods for content specific debug toolbar helpers.
@@ -46,7 +49,10 @@ class ToolbarHelper extends AppHelper {
  * @return \ToolbarHelper
  */
 	public function __construct($View, $options = array()) {
-		$this->_myName = strtolower(get_class($this));
+		$this->_myName = get_class($this);
+		$this->_myName = explode('\\', $this->_myName);
+		$this->_myName = array_pop($this->_myName);
+		$this->_myName = strtolower($this->_myName);
 		$this->settings = array_merge($this->settings, $options);
 
 		if ($this->_myName !== 'toolbarhelper') {

@@ -11,7 +11,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('DebugPanel', 'DebugKit.Lib');
+namespace DebugKit\Lib\Panel;
+
+use DebugKit\Lib\DebugPanel;
+use Cake\Controller\Controller;
+use Cake\Cache\Cache;
+use Cake\Core\Configure;
 
 /**
  * Provides debug information on previous requests.

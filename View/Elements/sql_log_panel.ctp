@@ -1,4 +1,10 @@
 <?php
+
+use Cake\Core\Configure;
+
+?>
+
+<?php
 /**
  * SQL Log Panel Element
  *

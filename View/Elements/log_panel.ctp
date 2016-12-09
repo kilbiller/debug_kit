@@ -1,4 +1,10 @@
 <?php
+
+use DebugKit\Lib\Log\Engine\DebugKitLog;
+
+?>
+
+<?php
 /**
  * Log Panel Element
  *

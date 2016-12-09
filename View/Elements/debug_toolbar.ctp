@@ -1,4 +1,10 @@
 <?php
+
+use Cake\Utility\Inflector;
+
+?>
+
+<?php
 /**
  * Debug Toolbar Element
  *

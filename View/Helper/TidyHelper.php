@@ -11,7 +11,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('File', 'Utility');
+namespace DebugKit\View\Helper;
+
+use Cake\Utility\File;
+use Cake\Core\Configure;
+use Cake\Core\Debugger;
+use Invityou\View\Helper\AppHelper;
 
 /**
  * TidyHelper class

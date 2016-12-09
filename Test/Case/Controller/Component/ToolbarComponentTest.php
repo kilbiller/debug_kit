@@ -102,10 +102,10 @@ class ToolbarComponentTestCase extends CakeTestCase {
 
 		unset($this->Controller);
 		ClassRegistry::flush();
-		if (class_exists('DebugMemory')) {
+		if (class_exists('\\DebugKit\\Lib\\DebugMemory')) {
 			DebugMemory::clear();
 		}
-		if (class_exists('DebugTimer')) {
+		if (class_exists('\\DebugKit\\Lib\\DebugTimer')) {
 			DebugTimer::clear();
 		}
 		Router::reload();

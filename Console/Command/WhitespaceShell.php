@@ -11,7 +11,11 @@
  * @since         DebugKit 1.3
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-App::uses('Folder', 'Utility');
+
+namespace DebugKit\Console\Command;
+
+use Cake\Utility\Folder;
+use Cake\Console\Shell;
 
 /**
  * Whitespace shell. Helps find and trim whitespace from files.

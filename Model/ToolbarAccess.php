@@ -12,7 +12,10 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('ConnectionManager', 'Model');
+namespace DebugKit\Model;
+
+use Cake\Model\ConnectionManager;
+use Cake\Core\Object;
 
 /**
  * Class ToolbarAccess

@@ -12,7 +12,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Debugger', 'Utility');
+namespace DebugKit\Lib;
+
+use Cake\Utility\Debugger;
 
 /**
  * Contains methods for Profiling and creating timers.
