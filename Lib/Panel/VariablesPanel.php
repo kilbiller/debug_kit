@@ -19,17 +19,22 @@ use Cake\Core\Configure;
 
 /**
  * Provides debug information on the View variables.
- *
  */
 class VariablesPanel extends DebugPanel {
 
 /**
  * beforeRender callback
  *
- * @param Controller $controller
+ * @param Controller $controller Controller object.
  * @return array
  */
 	public function beforeRender(Controller $controller) {
-		return array_merge($controller->viewVars, array('$request->data' => $controller->request->data));
+		$viewVars = $controller->viewVars;
+		unset(
+			$viewVars['debugToolbarPanels'],
+			$viewVars['debugToolbarJavascript'],
+			$viewVars['debugToolbarCss']
+		);
+		return array_merge($viewVars, array('$request->data' => $controller->request->data));
 	}
 }

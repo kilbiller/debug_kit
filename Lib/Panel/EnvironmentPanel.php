@@ -9,7 +9,6 @@
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- *
  */
 
 namespace DebugKit\Lib\Panel;
@@ -20,14 +19,13 @@ use Cake\Core\Configure;
 
 /**
  * Provides information about your PHP and CakePHP environment to assist with debugging.
- *
  */
 class EnvironmentPanel extends DebugPanel {
 
 /**
  * beforeRender - Get necessary data about environment to pass back to controller
  *
- * @param Controller $controller
+ * @param Controller $controller Controller object.
  * @return array
  */
 	public function beforeRender(Controller $controller) {

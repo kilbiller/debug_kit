@@ -20,7 +20,6 @@ use Cake\Core\Configure;
 
 /**
  * Provides debug information on the SQL logs and provides links to an ajax explain interface.
- *
  */
 class SqlLogPanel extends DebugPanel {
 
@@ -28,14 +27,14 @@ class SqlLogPanel extends DebugPanel {
  * Minimum number of Rows Per Millisecond that must be returned by a query before an explain
  * is done.
  *
- * @var integer
+ * @var int
  */
 	public $slowRate = 20;
 
 /**
  * Gets the connection names that should have logs + dumps generated.
  *
- * @param \Controller|string $controller
+ * @param Controller $controller The controller.
  * @return array
  */
 	public function beforeRender(Controller $controller) {

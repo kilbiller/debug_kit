@@ -20,7 +20,6 @@ use Cake\Core\Configure;
 
 /**
  * Log Panel - Reads log entries made this request.
- *
  */
 class LogPanel extends DebugPanel {
 
@@ -46,7 +45,7 @@ class LogPanel extends DebugPanel {
 /**
  * beforeRender Callback
  *
- * @param Controller $controller
+ * @param Controller $controller The controller.
  * @return array
  */
 	public function beforeRender(Controller $controller) {

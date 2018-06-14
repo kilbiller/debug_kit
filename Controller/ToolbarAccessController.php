@@ -80,7 +80,7 @@ class ToolbarAccessController extends DebugKitAppController {
 /**
  * Get a stored history state from the toolbar cache.
  *
- * @param null $key
+ * @param null $key The key.
  * @return void
  */
 	public function history_state($key = null) {

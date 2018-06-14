@@ -123,7 +123,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
 /**
  * Status whether component is enable or disable
  *
- * @var boolean
+ * @var bool
  */
 	public $enabled = true;
 
@@ -133,8 +133,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
  * If debug is off the component will be disabled and not do any further time tracking
  * or load the toolbar helper.
  *
- * @param ComponentCollection $collection
- * @param array $settings
+ * @param ComponentCollection $collection The collection.
+ * @param array $settings The settings.
  * @return \ToolbarComponent
  */
 	public function __construct(ComponentCollection $collection, $settings = array()) {
@@ -236,8 +236,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
  * Initialize callback.
  * If automatically disabled, tell component collection about the state.
  *
- * @param Controller $controller
- * @return boolean
+ * @param Controller $controller The controller
+ * @return bool
  */
 	public function initialize(Controller $controller) {
 		if (!$this->enabled) {
@@ -277,8 +277,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
 /**
  * Component Startup
  *
- * @param Controller $controller
- * @return boolean
+ * @param Controller $controller The controller
+ * @return bool
  */
 	public function startup(Controller $controller) {
 		$panels = array_keys($this->panels);
@@ -297,10 +297,10 @@ class ToolbarComponent extends Component implements CakeEventListener {
 /**
  * beforeRedirect callback
  *
- * @param Controller $controller
- * @param $url
- * @param null $status
- * @param boolean $exit
+ * @param Controller $controller The controller
+ * @param string|array $url The URL.
+ * @param null $status The status.
+ * @param bool $exit Will the script exit.
  * @return void
  */
 	public function beforeRedirect(Controller $controller, $url, $status = null, $exit = true) {
@@ -322,7 +322,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
  *
  * Calls beforeRender on all the panels and set the aggregate to the controller.
  *
- * @param Controller $controller
+ * @param Controller $controller The controller.
  * @return void
  */
 	public function beforeRender(Controller $controller) {
@@ -374,8 +374,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
 /**
  * Load a toolbar state from cache
  *
- * @param integer $key
- * @return array
+ * @param int $key The key.
+ * @return array The toolbar state.
  */
 	public function loadState($key) {
 		$history = Cache::read($this->cacheKey, 'debug_kit');
@@ -395,9 +395,9 @@ class ToolbarComponent extends Component implements CakeEventListener {
 			return;
 		}
 		$cache = array(
-		    'duration' => $this->cacheDuration,
-		    'engine' => 'File',
-		    'path' => CACHE
+			'duration' => $this->cacheDuration,
+			'engine' => 'File',
+			'path' => CACHE
 		);
 		if (isset($this->settings['cache'])) {
 			$cache = array_merge($cache, $this->settings['cache']);
@@ -406,10 +406,10 @@ class ToolbarComponent extends Component implements CakeEventListener {
 	}
 
 /**
- * collects the panel contents
+ * Collects the panel contents
  *
- * @param Controller $controller
- * @return array Array of all panel beforeRender()
+ * @param Controller $controller The controller.
+ * @return array Array of all panel beforeRender().
  */
 	protected function _gatherVars(Controller $controller) {
 		$vars = array('javascript' => array(), 'css' => array());
@@ -441,8 +441,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
 /**
  * Load Panels used in the debug toolbar
  *
- * @param $panels
- * @param $settings
+ * @param array $panels The panels.
+ * @param array $settings The settings.
  * @return void
  */
 	protected function _loadPanels($panels, $settings) {
