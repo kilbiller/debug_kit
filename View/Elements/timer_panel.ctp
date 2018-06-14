@@ -2,6 +2,7 @@
 
 use DebugKit\Lib\DebugKitDebugger;
 use DebugKit\Lib\DebugTimer;
+use DebugKit\Lib\DebugMemory;
 
 ?>
 
